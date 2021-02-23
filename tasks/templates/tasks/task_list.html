@@ -2,15 +2,26 @@
 
 {% block content %}
    <h1>Tasks list</h1>
-    <div class="articles">
+    <div class="tasks">
         {% for task in tasks %}
             {% if task.active %}
-            <div class="article">
+            <div class="task-pending">
                 <p>{{task.title}}</p>
                 <p>{{task.description}}</p>
                 <p>{{task.date}}</p>
-                <a href=""></a>
+                <p>Status : Pending</p>
+                <a href="{% url 'tasks:delete' task.pk %}">Delete</a>
+                <a href="{% url 'tasks:done' task.pk %}">Finish</a>
             </div>
-            {% endfor %}
+            {% else %}
+            <div class="task-done">
+                <p>{{task.title}}</p>
+                <p>{{task.description}}</p>
+                <p>{{task.date}}</p>
+                <p>Status : Done</p>
+                <a href="{% url 'tasks:delete' task.pk %}">Delete</a>
+            </div>
+            {% endif %}
+        {% endfor %}
         </div>
 {% endblock %}
