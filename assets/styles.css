@@ -1,0 +1,23 @@
+.create-task {
+    margin: auto;
+    width: 20%;
+    border: 2px solid #FFFF00;
+    padding: 10px;
+    text-align: center;
+}
+.tasks-list{
+    display: grid;
+    margin: 50px 100px ;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    position: center;
+    justify-items: center;
+    align-items: center;
+}
+.task-pending{
+    display: inline-block;
+    margin: 20px;
+    width: 30%;
+    padding: 10px;
+    border: 2px solid ;
+}

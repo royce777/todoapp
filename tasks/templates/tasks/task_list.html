@@ -4,7 +4,7 @@
    <h1>Tasks list</h1>
 
    <div class="create-task">
-    <h2>Create new article</h2>
+    <h2>Create new task</h2>
     <form class="site-form" action="{% url 'tasks:create' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="text" name="title">
