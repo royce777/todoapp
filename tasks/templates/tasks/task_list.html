@@ -2,12 +2,21 @@
 
 {% block content %}
    <h1>Tasks list</h1>
-    <div class="tasks">
+
+   <div class="create-task">
+    <h2>Create new article</h2>
+    <form class="site-form" action="{% url 'tasks:create' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="title">
+        <input type="submit" value="Add">
+    </form>
+    </div>
+
+    <div class="tasks-list">
         {% for task in tasks %}
             {% if task.active %}
             <div class="task-pending">
                 <p>{{task.title}}</p>
-                <p>{{task.description}}</p>
                 <p>{{task.date}}</p>
                 <p>Status : Pending</p>
                 <a href="{% url 'tasks:delete' task.pk %}">Delete</a>
@@ -16,7 +25,6 @@
             {% else %}
             <div class="task-done">
                 <p>{{task.title}}</p>
-                <p>{{task.description}}</p>
                 <p>{{task.date}}</p>
                 <p>Status : Done</p>
                 <a href="{% url 'tasks:delete' task.pk %}">Delete</a>

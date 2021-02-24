@@ -17,3 +17,9 @@ def task_done(request, pk_done):
     task.active = False
     task.save(update_fields=["active"])
     return redirect('home')
+
+def task_create(request):
+    if request.method == 'POST':
+        task = Task(title = request.POST['title'])
+        task.save()
+    return redirect('home')
